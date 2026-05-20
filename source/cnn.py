@@ -17,12 +17,16 @@ class ConvAutoencoder(nn.Module):
  
     def __init__(self):
         super().__init__()
+        self.quant   = torch.quantization.QuantStub()
         self.encoder = Encoder()
         self.decoder = Decoder()
+        self.dequant = torch.quantization.DeQuantStub()
  
     def forward(self, x):
+        x = self.quant(x)
         x = self.encoder(x)
         x = self.decoder(x)
+        x = self.dequant(x)
         return x
  
  

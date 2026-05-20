@@ -17,6 +17,7 @@ loss:
 
 quantize:
   backend: fbgemm
+  n_calibration: 50
   layers:
     - encoder.layers.12
     - decoder.layers.0
