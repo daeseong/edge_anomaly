@@ -1,8 +1,8 @@
 train:
   batch_size: 32
-  learning_rate: 0.001
-  weight_decay: 0.0005
-  epochs: 10
+  learning_rate: 0.00012
+  weight_decay: 0.00001
+  epochs: 100
 
 data:
   image_size: 256 # Downscale to 128 for computing constraint
@@ -17,7 +17,7 @@ loss:
 
 quantize:
   backend: fbgemm
-  n_calibration: 50
+  n_calibration: 100
   layers:
     - encoder.layers.12
     - decoder.layers.0
